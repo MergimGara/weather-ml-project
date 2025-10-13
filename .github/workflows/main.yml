@@ -2,7 +2,7 @@ name: Scheduled Weather Ingest
 
 on:
   schedule:
-    - cron: "360 * * * *"     # alle Stunde zur Minute 0 (UTC)
+    - cron: "0 6 * * *"     # alle Stunde zur Minute 0 (UTC)
   workflow_dispatch:        # erlaubt auch manuelles Auslösen
 
 jobs:
