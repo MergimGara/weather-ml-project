@@ -1,6 +1,6 @@
 from src.fetch_weather import get_weather_data
 from src.db_connector import init_supabase
-from datetime import datetime
+import datetime
 
 def ingest_weather_data(city: str):
     # 1. Wetterdaten holen
@@ -16,7 +16,7 @@ def ingest_weather_data(city: str):
     # 3. Daten vorbereiten für Insert
     data = {
         "city": city,
-        "timestamp": datetime.utcnow().isoformat(),  # UTC-Zeit
+        "timestamp": datetime.datetime.utcnow().isoformat(),  # UTC-Zeit
         "temperature_c": weather["temperature"],
         "humidity_percent": weather["humidity"],
         "weather_condition": weather["condition"]

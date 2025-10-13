@@ -1,4 +1,5 @@
 import requests
+import datetime
 import os
 from dotenv import load_dotenv
 
@@ -27,3 +28,14 @@ def fetch_weather(city="Zurich", units="metric", lang="en"):
 if __name__ == "__main__":
     weather_data = fetch_weather()
     print(weather_data)
+
+def get_weather_data(city):
+    raw = fetch_weather(city)
+    return {
+        "city": city,
+        "temperature": raw["main"]["temp"],
+        "humidity": raw["main"]["humidity"],
+        "condition": raw["weather"][0]["description"],
+        "timestamp": datetime.datetime.utcnow().isoformat()
+    }
+
