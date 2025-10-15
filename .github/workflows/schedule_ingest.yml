@@ -13,13 +13,21 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v3
 
+      - name: Debug workspace
+        run: |
+          echo "Current directory: $(pwd)"
+          echo "Files in workspace:"
+          ls -la
+          echo "Searching for requirements.txt:"
+          find . -name "requirements.txt"
+
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.11'
 
       - name: Install dependencies
-        run: pip install -r ./requirements.txt
+        run: pip install -r requirements.txt
 
       - name: Run ingestion
         env:
